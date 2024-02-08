@@ -1,4 +1,4 @@
-package com.keithu9999.infra;
+package com.keithu9999.selenium.infra;
 
 public enum BrowserType {
 	

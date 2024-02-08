@@ -1,4 +1,4 @@
-package com.keithu9999.infra;
+package com.keithu9999.selenium.infra;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
