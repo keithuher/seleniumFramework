@@ -16,6 +16,9 @@ public class GoogleSearchTest extends SeleniumTest {
 		
 		GoogleMainPage page = new GoogleMainPage(getDriver());
 		page.getPage();
+		
+		page.googleSearch("Fantastic Things");
+		
 		logger.info("Here!");
 		
 	}
