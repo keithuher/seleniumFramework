@@ -13,6 +13,7 @@ import com.keithu9999.selenium.test.SeleniumTest;
  * 
  * @author keithu9999
  */
+@Test(groups={"GoogleSearchTest", "regression"})
 public class GoogleSearchTest extends SeleniumTest {
 	
 	@Test(description="Execute a Google search and verify the results page")

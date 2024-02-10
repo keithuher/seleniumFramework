@@ -11,6 +11,7 @@ import com.keithu9999.selenium.test.SeleniumTest;
  * 
  * @author keithu9999
  */
+@Test(groups={"GoogleSmokeTest", "smoke"})
 public class GoogleSmokeTest extends SeleniumTest {
 	
 	@Test(description="Navigate to the main Google page and enter a search string")
