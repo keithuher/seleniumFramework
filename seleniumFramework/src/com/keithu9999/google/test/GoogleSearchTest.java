@@ -1,25 +1,29 @@
 package com.keithu9999.google.test;
 
-import java.util.logging.Logger;
-
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.keithu9999.google.pages.GoogleMainPage;
+import com.keithu9999.google.pages.GoogleSearchResultsPage;
 import com.keithu9999.selenium.test.SeleniumTest;
 
+/**
+ * Simple smoke test that attempts to navigate to the main
+ * Google search page and verifies that the page loads.
+ * 
+ * @author keithu9999
+ */
 public class GoogleSearchTest extends SeleniumTest {
 	
-	private Logger logger = Logger.getLogger("GoogleSearchTest");
-	
-	@Test(priority=1)
-	public void navigateTest() {
+	@Test(description="Execute a Google search and verify the results page")
+	public void searchTest() {
+		
+		String search = "Pittsburgh";
 		
 		GoogleMainPage page = new GoogleMainPage(getDriver());
 		page.getPage();
 		
-		page.googleSearch("Fantastic Things");
-		
-		logger.info("Here!");
-		
+		GoogleSearchResultsPage resultsPage = page.executeSearch(search);
+		Assert.assertEquals(resultsPage.getSearchTitle(), search, "Did not find expected search results page");
 	}
 }

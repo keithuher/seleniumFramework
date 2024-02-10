@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Suite" thread-count="50">
+<suite name="Suite" parallel="tests"  thread-count="50">
 
 	<parameter name="browser" value="Chrome"></parameter>
 
-  	<test name="Google Search Test">
+  	<test name="Google Smoke Test">
+    	<classes>
+      		<class name="com.keithu9999.google.test.GoogleSmokeTest"/>
+    	</classes>
+	</test>
+	
+	<test name="Google Search Test">
     	<classes>
       		<class name="com.keithu9999.google.test.GoogleSearchTest"/>
     	</classes>
