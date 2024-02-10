@@ -18,13 +18,13 @@ public abstract class SeleniumTest {
 	private static final Logger logger = Logger.getLogger("SeleniumTest");
 	
 	@Parameters({ "browser" })
-    @BeforeTest
+    @BeforeTest(alwaysRun=true)
     public void beforeTest(String browser) {
     	sd = new SeleniumDriver(getBrowserType(browser), "--remote-allow-origins=*");
     	driver = sd.getDriver();
     }
 
-    @AfterTest
+    @AfterTest(alwaysRun=true)
     public void afterTest() {
     	driver.quit();
     	logger.info("Quit WebDriver for " + browser);
