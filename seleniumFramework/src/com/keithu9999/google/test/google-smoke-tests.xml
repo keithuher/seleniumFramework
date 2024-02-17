@@ -9,7 +9,8 @@
     	</run>
  	</groups>
 
-	<parameter name="browser" value="Chrome"></parameter>
+	<parameter name="browser" value="Chrome"/>
+	<parameter name="grid" value="local"/>
 
   	<test name="Google Smoke Test">
     	<classes>
