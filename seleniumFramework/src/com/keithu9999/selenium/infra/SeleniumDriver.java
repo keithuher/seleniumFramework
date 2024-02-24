@@ -1,7 +1,5 @@
 package com.keithu9999.selenium.infra;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.logging.Logger;
 
 import org.openqa.selenium.WebDriver;
@@ -29,7 +27,7 @@ public class SeleniumDriver {
 	}
 
 	public WebDriver getDriver() {
-		System.out.println("Setting up a WebDriver for browser " + browserType.getName() + " using grid " + gridType.getName());
+		logger.info("Setting up a WebDriver for browser " + browserType.getName() + " using grid " + gridType.getName());
 		
 		switch (browserType) {
 			case CHROME:
@@ -43,11 +41,7 @@ public class SeleniumDriver {
 				if(gridType == GridType.DESKTOP) {
 					DesiredCapabilities capabilities = new DesiredCapabilities();
 			        capabilities.setCapability(ChromeOptions.CAPABILITY, opts);
-			        try {
-			        	driver = new RemoteWebDriver(new URL("http://127.0.0.1:4444"), capabilities);
-			        } catch (MalformedURLException ex) {
-			        	logger.warning(ex.toString());
-			        }
+			        driver = new RemoteWebDriver(gridType.getURL(), capabilities);
 				}
 				else
 					driver = new ChromeDriver(opts);
