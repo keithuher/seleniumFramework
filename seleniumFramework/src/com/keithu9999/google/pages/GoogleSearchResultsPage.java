@@ -1,9 +1,10 @@
 package com.keithu9999.google.pages;
 
-import java.util.logging.Logger;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 
 import com.keithu9999.selenium.pages.PageObject;
@@ -13,7 +14,7 @@ import com.keithu9999.selenium.pages.PageObject;
  */
 public class GoogleSearchResultsPage extends PageObject {
 
-	private Logger logger = Logger.getLogger("GoogleSearchResultsPage");
+	private static final Logger LOG = LoggerFactory.getLogger(GoogleSearchResultsPage.class);
 	
 	private static final By RESULT_TITLE_BY = By.cssSelector("div[data-attrid='title']");
 	private String search;
@@ -30,7 +31,7 @@ public class GoogleSearchResultsPage extends PageObject {
 
 	@Override
 	public PageObject getPage() {
-		logger.info("Navigating to search results page for " + search);
+		LOG.info("Navigating to search results page for " + search);
 		waitForVisible(RESULT_TITLE_BY);
 		pageUrl = driver.getCurrentUrl();
 		String partialUrl = "google.com/search?q=" + search;

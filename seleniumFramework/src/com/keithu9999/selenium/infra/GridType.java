@@ -2,7 +2,9 @@ package com.keithu9999.selenium.infra;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.logging.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public enum GridType {
 	
@@ -12,14 +14,14 @@ public enum GridType {
     private String name;
     private URL url;
     
-    private final Logger logger = Logger.getLogger("SeleniumDriver");
+    private final Logger LOG = LoggerFactory.getLogger(GridType.class);
 
     GridType(String name, String url) {
         this.name = name;
         try {
 			this.url = new URL(url);
 		} catch (MalformedURLException ex) {
-			logger.warning(ex.getStackTrace().toString());
+			LOG.warn(ex.getStackTrace().toString());
 		}
     }
 

@@ -1,21 +1,23 @@
 package com.keithu9999.google.pages;
 
 import java.time.Duration;
-import java.util.logging.Logger;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 
 import com.keithu9999.selenium.pages.PageObject;
+import com.keithu9999.selenium.test.SeleniumTest;
 
 /**
  * Page Object encapsulates the Home Page
  */
 public class GoogleMainPage extends PageObject {
 
-	private Logger logger = Logger.getLogger("GoogleMainPage");
+	private static final Logger LOG = LoggerFactory.getLogger(SeleniumTest.class);
 	
 	private static final By GMAIL_LINK_BY = By.cssSelector("a[href^='https://mail.google.com']");
 	private static final By SEARCH_TEXT_BY = By.cssSelector("textarea[title='Search']");
@@ -43,7 +45,7 @@ public class GoogleMainPage extends PageObject {
 	public PageObject getPage() {
 		String navUrl = "https://google.com";
 		String expectedPageUrl = "https://www.google.com/";
-		logger.info("Navigating to " + navUrl);
+		LOG.info("Navigating to " + navUrl);
 		driver.get(navUrl);
 		waitForVisible(GMAIL_LINK_BY);
 		Assert.assertEquals(driver.getCurrentUrl(), expectedPageUrl, "Did not find expected page");

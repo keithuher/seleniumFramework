@@ -1,7 +1,9 @@
 package com.keithu9999.selenium.infra;
 
 import java.time.Duration;
-import java.util.logging.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * A generic poller implementation used to verify a condition that takes time to manifest.
@@ -10,7 +12,7 @@ import java.util.logging.Logger;
  */
 public abstract class ElementPoller {
 	
-	private Logger logger = Logger.getLogger("GoogleSearchTest");
+	private static final Logger LOG = LoggerFactory.getLogger(ElementPoller.class);
 	
 	// The initial time that the poller starts executing
 	private final long startTime = System.currentTimeMillis();
@@ -33,7 +35,7 @@ public abstract class ElementPoller {
 	 */
 	public boolean poll(Duration interval, Duration timeout) {
 		
-		logger.info("Starting poller to " + conditionDescription() + " start time " + getStartTime());
+		LOG.info("Starting poller to " + conditionDescription() + " start time " + getStartTime());
 		pauseFor(interval.getSeconds());
 		boolean result = conditionSatisfied();
 		if(result)
@@ -54,7 +56,7 @@ public abstract class ElementPoller {
 			pauseFor(interval.getSeconds());
 			elapsedTimeMillis = getElapsedTimeMillis();
 			
-			logger.info("Attempting to " + conditionDescription() + " count " + counter);
+			LOG.info("Attempting to " + conditionDescription() + " count " + counter);
 		}
 		
 		return result;

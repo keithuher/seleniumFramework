@@ -1,18 +1,18 @@
 package com.keithu9999.selenium.infra;
 
-import java.util.logging.Logger;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 
 public class SeleniumDriver {
 	
-	private static final Logger logger = Logger.getLogger("SeleniumDriver");
+	private static final Logger LOG = LoggerFactory.getLogger(SeleniumDriver.class);
 
 	//private WebDriver driver;
 	private WebDriver driver;
@@ -27,7 +27,8 @@ public class SeleniumDriver {
 	}
 
 	public WebDriver getDriver() {
-		logger.info("Setting up a WebDriver for browser " + browserType.getName() + " using grid " + gridType.getName());
+		
+		LOG.info("Setting up a WebDriver for browser " + browserType.getName() + " using grid " + gridType.getName());
 		
 		switch (browserType) {
 			case CHROME:
@@ -56,8 +57,6 @@ public class SeleniumDriver {
 				Assert.fail("Unsupported driver: " + browserType.getName());
 				break;
 		}
-		
-		// Set any global driver properties here
 		
 		return driver;
 	}

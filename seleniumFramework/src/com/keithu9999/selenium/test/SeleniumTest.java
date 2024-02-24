@@ -1,7 +1,9 @@
 package com.keithu9999.selenium.test;
-import java.util.logging.Logger;
+
 
 import org.openqa.selenium.WebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -17,19 +19,20 @@ public abstract class SeleniumTest {
 	private WebDriver driver;
 	private String browser;
 	private String grid;
-	private static final Logger logger = Logger.getLogger("SeleniumTest");
+	private static final Logger LOG = LoggerFactory.getLogger(SeleniumTest.class);
 	
 	@Parameters({ "browser", "grid" })
     @BeforeTest(alwaysRun=true)
     public void beforeTest(String browser, String grid) {
     	sd = new SeleniumDriver(getBrowserType(browser), getGridType(grid), "--remote-allow-origins=*");
     	driver = sd.getDriver();
+    	LOG.info("Started WebDriver for " + browser + " on grid " + grid + " (" + getGridType(grid).getURL() + ")");
     }
 
     @AfterTest(alwaysRun=true)
     public void afterTest() {
     	driver.quit();
-    	logger.info("Quit WebDriver for " + browser);
+    	LOG.info("Quit WebDriver for " + browser);
     }
     
     public WebDriver getDriver() {
@@ -39,7 +42,7 @@ public abstract class SeleniumTest {
     private BrowserType getBrowserType(String browser) {
     	
     	this.browser = browser;
-    	logger.info("Initializing WebDriver for " + this.browser);
+    	LOG.info("Initializing WebDriver for " + this.browser);
     	
     	switch (browser)
     	{
@@ -53,7 +56,7 @@ public abstract class SeleniumTest {
     
 	private GridType getGridType(String grid) {
 		this.grid = grid;
-		logger.info("Setting up properties for grid " + this.grid);
+		LOG.info("Setting up properties for grid " + this.grid);
 
 		switch (grid) {
 			case "local":
