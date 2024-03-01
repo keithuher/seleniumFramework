@@ -112,7 +112,7 @@ public abstract class SmartElement {
 		List<WebElement> visibleElements = new ArrayList<>();
 		
 		try {
-			new ElementPoller() {
+			new ConditionPoller() {
 
 				@Override
 				public String conditionDescription() {

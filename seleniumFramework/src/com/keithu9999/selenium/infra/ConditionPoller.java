@@ -10,15 +10,15 @@ import org.slf4j.LoggerFactory;
  * 
  * @author keithu9999
  */
-public abstract class ElementPoller {
+public abstract class ConditionPoller {
 	
-	private static final Logger LOG = LoggerFactory.getLogger(ElementPoller.class);
+	private static final Logger LOG = LoggerFactory.getLogger(ConditionPoller.class);
 	
 	// The initial time that the poller starts executing
 	private final long startTime = System.currentTimeMillis();
 
 	/**
-	 * @return A description of what the poller is waiting to happen
+	 * @return a description of the condition that the poller is waiting for
 	 */
 	public abstract String conditionDescription();
 
@@ -29,7 +29,7 @@ public abstract class ElementPoller {
 	
 	/**
 	 * Defines the parameters of the poller.
-	 * @param interval The time between checks if the condition has been satisfied.
+	 * @param interval The time between checks if the condition has not been satisfied.
 	 * @param timeout The overall time that the poller runs.
 	 * @return true if the condition was satisfied, false if not
 	 */
