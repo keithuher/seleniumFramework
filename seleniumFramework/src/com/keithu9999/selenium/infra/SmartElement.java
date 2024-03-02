@@ -31,7 +31,7 @@ public abstract class SmartElement {
 	 * @return the WebElement that you are waiting for.
 	 */
 	public WebElement waitForVisible(By by) {
-		return waitFor(by, STANDARD_TEN_SECOND_WAIT, ExpectedConditions.visibilityOfElementLocated(by));
+		return waitForVisible(by, STANDARD_TEN_SECOND_WAIT);
 	}
 	
 	/**
@@ -52,7 +52,7 @@ public abstract class SmartElement {
 	 * @return the WebElement that you are waiting for.
 	 */
 	public WebElement waitForPresence(By by) {
-		return waitFor(by, STANDARD_TEN_SECOND_WAIT, ExpectedConditions.presenceOfElementLocated(by));
+		return waitForPresence(by, STANDARD_TEN_SECOND_WAIT);
 	}
 	
 	/**
@@ -73,7 +73,7 @@ public abstract class SmartElement {
 	 * @return the WebElement that you are waiting for.
 	 */
 	public WebElement waitForClickable(By by) {
-		return waitFor(by, STANDARD_TEN_SECOND_WAIT, ExpectedConditions.elementToBeClickable(by));
+		return waitForClickable(by, STANDARD_TEN_SECOND_WAIT);
 	}
 	
 	/**
